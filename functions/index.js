@@ -1,8 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Request, Response } from "express";
 import { loadDocument } from "pdf-metadata";
 
-export default async (req: Request, res: Response) => {
+export default async (req, res) => {
   try {
     const { fileUrl } = req.body;
     if (!fileUrl) throw new Error("Must send a valid fileUrl.");
