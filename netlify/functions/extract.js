@@ -1,4 +1,4 @@
-import { loadDocument } from "pdf-metadata";
+const pdfMetadata = require("pdf-metadata")
 
 exports.handler = async function (event, context) {
   try {
@@ -7,7 +7,7 @@ exports.handler = async function (event, context) {
 
     console.log(`Processing ${fileUrl}.`);
 
-    const document = await loadDocument(fileUrl);
+    const document = await pdfMetadata.loadDocument(fileUrl);
     const info = await document.getInfo();
 
     return {

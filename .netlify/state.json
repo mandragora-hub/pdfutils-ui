@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Santo Domingo",
+			"country": {
+				"code": "DO",
+				"name": "Dominican Republic"
+			},
+			"subdivision": {
+				"code": "01",
+				"name": "Nacional"
+			},
+			"timezone": "America/Santo_Domingo",
+			"latitude": 18.4615,
+			"longitude": -69.8965
+		},
+		"timestamp": 1693069073595
+	}
+}
