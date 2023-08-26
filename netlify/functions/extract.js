@@ -9,14 +9,12 @@ exports.handler = async function (event, context) {
 
     const document = await loadDocument(fileUrl);
     const info = await document.getInfo();
-    
+
     return {
       statusCode: 200,
       body: JSON.stringify(info),
     };
   } catch (error) {
-    return res.status(400).json(error);
+    return { statusCode: 400, body: JSON.stringify(error) };
   }
 };
-
-
