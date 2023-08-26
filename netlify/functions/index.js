@@ -1,17 +1,22 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { loadDocument } from "pdf-metadata";
 
-export default async (req, res) => {
+exports.handler = async function (event, context) {
   try {
-    const { fileUrl } = req.body;
+    const { fileUrl } = JSON.parse(event.body);
     if (!fileUrl) throw new Error("Must send a valid fileUrl.");
 
     console.log(`Processing ${fileUrl}.`);
 
     const document = await loadDocument(fileUrl);
     const info = await document.getInfo();
-    return res.status(200).json(info);
+    
+    return {
+      statusCode: 200,
+      body: JSON.stringify(info),
+    };
   } catch (error) {
     return res.status(400).json(error);
   }
 };
+
+
