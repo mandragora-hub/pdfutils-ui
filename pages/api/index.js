@@ -1,4 +1,4 @@
-import { loadDocument } from "pdf-metadata";
+import { extractMetadataAndPages } from "pdf-metadata";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -7,10 +7,7 @@ export default async function handler(req, res) {
       if (!fileUrl) throw new Error("Must send a valid fileUrl.");
 
       console.log(`Processing ${fileUrl}.`);
-
-      const document = await loadDocument(fileUrl);
-      const info = await document.getInfo();
-
+      const info = await extractMetadataAndPages(fileUrl);
       return res.status(200).json(info);
     } catch (error) {
       return res.status(400).json(error);
