@@ -1,6 +1,11 @@
 {
-    "cSpell.words": [
-        "mandragorahub",
-        "nhost"
-    ]
+  "cSpell.words": [
+    "dotfiles",
+    "litterarum",
+    "Litterarum's",
+    "mandragorahub",
+    "maxsize"
+  ],
+  "jest.rootPath": ".",
+  "jest.jestCommandLine": "`npm test`"
 }
