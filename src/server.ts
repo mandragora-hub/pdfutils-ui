@@ -37,7 +37,7 @@ app.use("/api/v1/healthcheck", v1RouterHealthCheck);
 if (process.env.NODE_ENV !== "test") {
   const server = app.listen(process.env.PORT, () => {
     console.log(
-      `⚡️[server]: Server is running at http://localhost:${process.env.PORT}`
+      `⚡️[server]: Server is running at ${process.env.BASE_URL}`
     );
 
     // Graceful Shutdown
