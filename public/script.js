@@ -6,9 +6,14 @@ const input = document.getElementById("input");
 const submitButton = document.getElementById("submit-button");
 const resetButton = document.getElementById("reset-button");
 const loading = document.getElementById("loading");
+const resultSection = document.getElementById("result-section");
+const container = document.getElementById("container");
+const resultTitle = document.getElementById("result-title");
+const errorElement = document.getElementById("error-statement");
 
 function showLoading() {
   submitButton.setAttribute("disabled", "true");
+  resultSection.style.display = "none";
   loading.style.display = "block";
 }
 
@@ -19,12 +24,25 @@ function hideLoading() {
 
 function showResults(result) {
   hideLoading();
-  console.log(result);
+  resultSection.style.display = "block";
+
+  const textNode = document.createTextNode(result.metadata.title || "");
+  resultTitle.appendChild(textNode);
+
+  const tree = jsonTree.create(result, container);
+  tree.expand(function (node) {
+    return node.childNodes.length < 2 || node.label === "metadata";
+  });
+  console.log("result", result);
 }
 
 function showErrors(error) {
   hideLoading();
-  console.log("error", error);
+
+  console.error("error", error);
+  const errorTextNode = document.createTextNode(error);
+  errorElement.appendChild(errorTextNode);
+  errorElement.style.display = "block";
 }
 
 form.addEventListener("submit", (e) => {
@@ -49,10 +67,18 @@ form.addEventListener("submit", (e) => {
 
   showLoading();
   fetch("http://localhost:3000/api/v1/files/pdf", requestOptions)
-    .then((response) => response.json())
-    .then((result) => showResults(result))
-    .catch((error) => showErrors(error));
+  .then((response) => response.json())
+  .then((result) => showResults(result))
+  .catch((error) => showErrors(error));
 });
+
+resetButton.addEventListener("click", () => {
+  hideLoading();
+  resultSection.style.display = "none";
+  errorElement.style.display = "none";
+})
+
+
 
 // * Automatically generate text
 const textEl = document.getElementById("auto-text");

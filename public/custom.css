@@ -22,6 +22,16 @@
   margin: auto;
 }
 
+#result-section {
+  display: none;
+}
+
+#error-statement {
+  display: none;
+  color: red;
+}
+
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

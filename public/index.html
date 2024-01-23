@@ -7,6 +7,8 @@
     <meta name="generator" content="BBEdit 8.7" />
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
     <link rel="stylesheet" href="custom.css" />
+    <link href="lib/jsonTree.css" rel="stylesheet" />
+    <script src="lib/jsonTree.js"></script>
     <title>PDF Metadata Extractor</title>
   </head>
 
@@ -19,7 +21,23 @@
         PDF file in a ease way. Just provide us with a url with your pdf and we
         will do the rest.
       </p>
-
+      <details>
+        <summary>Glossary</summary>
+        <p>The following fields will be generated</p>
+        <ul>
+          <li>Pages: total page of document</li>
+          <li>Word count: total word calculeted in document</li>
+          <li>Read time: estimed time to complete read the document</li>
+          <li>
+            Metadata: properties of documents files usings
+            <a
+              href="https://helpx.adobe.com/acrobat/using/pdf-properties-metadata.html"
+              target="_blank"
+              >adobe metadata definition.</a
+            >
+          </li>
+        </ul>
+      </details>
       <p>
         This product is part of
         <a href="https://litterarum.vercel.app/" target="_blank">Litterarum</a>
@@ -48,13 +66,23 @@
 
       <div class="result-container">
         <div id="loading"></div>
-        <article id="result">
-          <h4>Results for: <span id="result-title"> asdasd </span></h4>
-          <code id="result-code">
-            body { color: var(--text); background: var(--bg); font-size:
-            1.15rem; line-height: 1.5; margin: 0; }
-          </code>
-        </article>
+        <p id="error-statement"></p>
+        <section id="result-section">
+          <h4>Results for: <span id="result-title"></span></h4>
+
+          <ul>
+            <li>Pages: <span></span></li>
+            <li>Word count: <span></span></li>
+            <li>Read time<i>(estimated)</i>: <span></span></li>
+          </ul>
+
+          <details>
+            <summary>Complete response</summary>
+            <div id="container"></div>
+          </details>
+        </section>
+
+
       </div>
     </main>
 
