@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  pdf-metadata-extractor:
+    container_name: pdf-metadata-extractor
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      PORT: ${PORT}
+      BASE_URL: ${BASE_URL}
+    network_mode: host
