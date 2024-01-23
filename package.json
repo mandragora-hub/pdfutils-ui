@@ -7,10 +7,9 @@
     "dev": "ts-node-dev --files -r tsconfig-paths/register ./src/server.ts",
     "clean": "rimraf dist",
     "compile": "tsc && tsc-alias ",
-    "copy-files": "copyfiles public/* dist",
-    "build": "npm run clean && npm run compile && npm run copy-files",
+    "build": "npm run clean && npm run compile",
     "start": "node .",
-    "test": "cross-env NODE_ENV=test jest --coverage --detectOpenHandles --testTimeout=10000",
+    "test": "cross-env NODE_ENV=test jest --coverage --testTimeout=10000",
     "format": "prettier --write {**/,}*.js",
     "format:check": "prettier --check {**/,}*.js",
     "lint": "eslint ."
@@ -19,7 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "ajv": "^8.11.2",
-    "copyfiles": "^2.4.1",
     "cors": "^2.8.4",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
