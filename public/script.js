@@ -9,6 +9,9 @@ const loading = document.getElementById("loading");
 const resultSection = document.getElementById("result-section");
 const container = document.getElementById("container");
 const resultTitle = document.getElementById("result-title");
+const resultPages = document.getElementById("result-pages");
+const resultWordCount = document.getElementById("result-word-count");
+const resultReadTime = document.getElementById("result-read-time");
 const errorElement = document.getElementById("error-statement");
 
 function showLoading() {
@@ -26,9 +29,13 @@ function showResults(result) {
   hideLoading();
   resultSection.style.display = "block";
 
-  const textNode = document.createTextNode(result.metadata.title || "");
-  resultTitle.appendChild(textNode);
+  appendTextToNode(resultTitle, result.metadata.title || "");
+  appendTextToNode(resultPages, result.pages || "");
+  appendTextToNode(resultWordCount, result.wordCount || "");
+  appendTextToNode(resultReadTime, msToTime(result.readTime || 0));
 
+  //show json result
+  container.textContent = "";
   const tree = jsonTree.create(result, container);
   tree.expand(function (node) {
     return node.childNodes.length < 2 || node.label === "metadata";
@@ -67,18 +74,39 @@ form.addEventListener("submit", (e) => {
 
   showLoading();
   fetch("http://localhost:3000/api/v1/files/pdf", requestOptions)
-  .then((response) => response.json())
-  .then((result) => showResults(result))
-  .catch((error) => showErrors(error));
+    .then((response) => response.json())
+    .then((result) => showResults(result))
+    .catch((error) => showErrors(error));
 });
 
 resetButton.addEventListener("click", () => {
   hideLoading();
   resultSection.style.display = "none";
   errorElement.style.display = "none";
-})
+});
 
+// **utils
+function appendTextToNode(node, text) {
+  const textNode = document.createTextNode(text);
+  node.textContent = ""; //clear element
+  node.appendChild(textNode);
+}
 
+function padTo2Digits(num) {
+  return num.toString().padStart(2, "0");
+}
+
+function msToTime(milliseconds) {
+  const seconds = padTo2Digits(Math.floor((milliseconds / 1000) % 60));
+  const minutes = padTo2Digits(Math.floor((milliseconds / (1000 * 60)) % 60));
+  const hours = padTo2Digits(
+    Math.floor((milliseconds / (1000 * 60 * 60)) % 24)
+  );
+
+  return `${padTo2Digits(hours)} hours, ${padTo2Digits(
+    minutes
+  )} minutes, ${padTo2Digits(seconds)} seconds`;
+}
 
 // * Automatically generate text
 const textEl = document.getElementById("auto-text");
