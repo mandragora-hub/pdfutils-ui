@@ -73,7 +73,7 @@ form.addEventListener("submit", (e) => {
   };
 
   showLoading();
-  fetch("http://localhost:3000/api/v1/files/pdf", requestOptions)
+  fetch(`${location.origin}/api/v1/files/pdf`, requestOptions)
     .then((response) => response.json())
     .then((result) => showResults(result))
     .catch((error) => showErrors(error));
