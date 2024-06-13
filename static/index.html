@@ -17,7 +17,7 @@
 
   <body class="l-application is-paper">
     <main class="l-main">
-      <div class="u-align--center u-vertically-center ">
+      <div class="u-align--center u-vertically-center">
         <section class="p-section">
           <h1>PDFUtils</h1>
           <h4 class="p-muted-heading">PDF Metadata Extractor</h4>
@@ -43,9 +43,16 @@
               name="url"
               required
             />
-            <button id="submit-button">Send</button>
+            <button id="submit-button" type="submit">Send</button>
             <button id="reset-button" type="reset">Reset</button>
           </form>
+        </section>
+
+        <section id="result-section" class="p-section">
+          <pre id="result-pre"><code id="result-code"></code></pre>
+          <div id="loading">
+            <i class="p-icon--spinner u-animation--spin"></i>
+          </div>
         </section>
 
         <hr class="is-muted" />
@@ -91,43 +98,14 @@
             </ul>
           </details>
         </section>
-
-        <!-- 
-          <div class="result-container">
-            <div id="loading"></div>
-            <p id="error-statement"></p>
-            <section id="result-section">
-              <h5>Results for: <span id="result-title"></span></h5>
-              <ul>
-                <li>Pages: <span id="result-pages"></span></li>
-                <li>Word count: <span id="result-word-count"></span></li>
-                <li>
-                  Read time<i>(estimated)</i>:
-                  <span id="result-read-time"></span>
-                </li>
-              </ul>
-
-              <details>
-                <summary>Complete response</summary>
-                <div id="container"></div>
-              </details>
-            </section>
-          </div> -->
       </div>
-      <!-- <footer class="l-footer">
-        <p>Mandragora's website.</p>
-        <p>
-          Thank to
-          <a href="https://simplecss.org/demo" target="_blank">simple.css</a>
-          theme for styles
-        </p>
-        <p id="auto-text" text="We Love Programming!"></p>
-      </footer> -->
     </main>
 
     <script src="script.js"></script>
-    <script defer data-domain="extractor.metadata.redania.lat" src="https://plausible.redania.lat/js/script.js"></script>
+    <script
+      defer
+      data-domain="extractor.metadata.redania.lat"
+      src="https://plausible.redania.lat/js/script.js"
+    ></script>
   </body>
 </html>
-
-<!-- Welcome Pages -->
