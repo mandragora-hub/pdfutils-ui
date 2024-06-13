@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="BBEdit 8.7" />
+    <link
+      rel="stylesheet"
+      href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.12.0.min.css"
+    />
+    <!-- <link rel="stylesheet" href="custom.css" /> -->
+    <!-- <link href="lib/jsonTree.css" rel="stylesheet" /> -->
+    <!-- <script src="lib/jsonTree.js"></script> -->
+    <title>PDF Metadata Extractor</title>
+  </head>
+
+  <body class="l-application is-paper">
+    <main class="l-main">
+      <div class="u-align--center u-vertically-center">
+        <section class="p-section">
+          <h1>PDFUtils</h1>
+          <h4 class="p-muted-heading">PDF Metadata Extractor</h4>
+          <p>
+            Welcome dear stranger <span role="img" alt="hello">👋</span>, here
+            you&apos;ll able to <mark>extract the metadata information</mark> of
+            a PDF file in a ease way. Just provide us with a url with your pdf
+            and we will do the rest.
+            <span
+              ><code
+                >The service may take time to respond depending on the size,
+                content, and availability of the service.</code
+              ></span
+            >
+          </p>
+        </section>
+        <section class="p-section">
+          <form id="form">
+            <input
+              id="input"
+              type="url"
+              placeholder="https://litterarum.onrender.com/api/v1/files/tratado-beccaria.pdf"
+              name="url"
+              required
+            />
+            <button id="submit-button" type="submit">Send</button>
+            <button id="reset-button" type="reset">Reset</button>
+          </form>
+        </section>
+
+        <section id="result-section" class="p-section">
+          <pre id="result-pre"><code id="result-code"></code></pre>
+          <div id="loading">
+            <i class="p-icon--spinner u-animation--spin"></i>
+          </div>
+        </section>
+
+        <hr class="is-muted" />
+        <section class="p-section">
+          <p>
+            This product is part of
+            <a href="https://litterarum.vercel.app/" target="_blank"
+              >Litterarum</a
+            >
+            project, and is available to anyone who wants to use it. If you want
+            to check it out the code
+            <a
+              href="https://github.com/mandragora-hub/metadata-extractor"
+              target="_blank"
+              >click here to visit the repository</a
+            >
+            and feel free to contribute or do whatever you want. Special thanks
+            to
+            <a href="https://github.com/py-pdf/pypdf" target="_blank">Pypdf</a>,
+            that awesome project.
+          </p>
+          <details>
+            <summary>Glossary</summary>
+            <p>The following fields will be generated</p>
+            <ul class="p-list">
+              <li class="p-list__item has-bullet">
+                Pages: total page of document
+              </li>
+              <li class="p-list__item has-bullet">
+                Word count: total word calculated in document
+              </li>
+              <li class="p-list__item has-bullet">
+                Read time: estimated time to complete read the document
+              </li>
+              <li class="p-list__item has-bullet">
+                Metadata: properties of documents files usings
+                <a
+                  href="https://helpx.adobe.com/acrobat/using/pdf-properties-metadata.html"
+                  target="_blank"
+                  >adobe metadata definition.</a
+                >
+              </li>
+            </ul>
+          </details>
+        </section>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script
+      defer
+      data-domain="extractor.metadata.redania.lat"
+      src="https://plausible.redania.lat/js/script.js"
+    ></script>
+  </body>
+</html>

@@ -1,11 +1,17 @@
-version: "3.8"
 services:
-  pdf-metadata-extractor:
-    container_name: pdf-metadata-extractor
-    build: .
+  pdfutils-ui:
+    container_name: pdfutils-ui
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
     ports:
-      - 3000:3000
-    environment:
-      PORT: ${PORT}
-      BASE_URL: ${BASE_URL}
-    network_mode: host
+      - 3000:80
+    # environment:
+    #   PORT: ${PORT}
+    #   BASE_URL: ${BASE_URL}
+    network_mode: bridge
+    develop:
+      watch:
+        - action: sync
+          path: ./static
+          target: /usr/share/nginx/html/
