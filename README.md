@@ -7,9 +7,9 @@ This mini services allow you to extract metadata from pdf files
 First, run the development server:
 
 ```bash
-npm run dev
+docker compose up --watch
 ```
-
+<!-- 
 ## Publish docker image to repository
 
 ```bash
@@ -25,4 +25,4 @@ docker tag metadata-extractor mandragorahub/metadata-extractor
 # Push
 docker push mandragorahub/metadata-extractor
 
-```
+``` -->
