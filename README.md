@@ -21,6 +21,7 @@ The services will respond with the next JSON, given the URL <https://litterarum.
   }
 }
 ```
+
 ## Development
 
 Run docker-compose in watch mode:
@@ -28,3 +29,5 @@ Run docker-compose in watch mode:
 ```bash
 docker compose up --watch
 ```
+
+Or  also if you prefer can use Live serve directly with vscode.

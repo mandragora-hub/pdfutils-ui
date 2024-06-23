@@ -43,13 +43,6 @@ function showResults(result) {
   // appendTextToNode(resultReadTime, msToTime(result.readTime || 0));
 
   appendTextToNode(resultCode, JSON.stringify(result, null, 2));
-
-  //show json result
-  // container.textContent = "";
-  // const tree = jsonTree.create(result, container);
-  // tree.expand(function (node) {
-  //   return node.childNodes.length < 2 || node.label === "metadata";
-  // });
   console.log("result", result);
 }
 
@@ -65,22 +58,8 @@ function showErrors(error) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const fileUrl = input.value;
+  const fileUrl = encodeURI(input.value.trim());
   if (!fileUrl) return;
-
-  // const myHeaders = new Headers();
-  // myHeaders.append("Content-Type", "application/json");
-
-  // const raw = JSON.stringify({
-  // fileUrl: url,
-  // });
-
-  // const requestOptions = {
-  //   method: "POST",
-  //   headers: myHeaders,
-  //   body: raw,
-  //   redirect: "follow",
-  // };
 
   showLoading();
   const baseURL = "https://pdfutils.redania.lat";
@@ -99,22 +78,6 @@ function appendTextToNode(node, text) {
   const textNode = document.createTextNode(text);
   node.textContent = ""; //clear element
   node.appendChild(textNode);
-}
-
-function padTo2Digits(num) {
-  return num.toString().padStart(2, "0");
-}
-
-function msToTime(milliseconds) {
-  const seconds = padTo2Digits(Math.floor((milliseconds / 1000) % 60));
-  const minutes = padTo2Digits(Math.floor((milliseconds / (1000 * 60)) % 60));
-  const hours = padTo2Digits(
-    Math.floor((milliseconds / (1000 * 60 * 60)) % 24)
-  );
-
-  return `${padTo2Digits(hours)} hours, ${padTo2Digits(
-    minutes
-  )} minutes, ${padTo2Digits(seconds)} seconds`;
 }
 
 // * Automatically generate text
